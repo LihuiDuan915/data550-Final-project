@@ -1,0 +1,39 @@
+---
+title: "Second Report"
+author: "Lihui Duan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readr)
+rsv_data <- read_csv("../data/rsv_vax.csv")
+source("../code/analysis.R")
+```
+
+
+
+
+## Introduction
+
+This report analyzes publicly available CDC data on RSV vaccination coverage among pregnant or recently pregnant women (aged 18–49), categorized by race and ethnicity. We aim to summarize coverage statistics and explore trends over time.
+
+## Table
+
+The following table summarizes vaccination percentage and estimated eligible population across racial and ethnic groups.
+
+```{r table, echo=FALSE, message=FALSE, warning=FALSE}
+create_table(rsv_data)
+```
+
+
+## Figure
+
+The following figure visualizes the trend of RSV vaccination coverage over time by race and ethnicity.
+
+
+```{r figure, echo=FALSE, message=FALSE, warning=FALSE}
+create_plot(rsv_data)
+```

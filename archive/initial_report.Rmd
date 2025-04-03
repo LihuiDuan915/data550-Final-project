@@ -1,0 +1,82 @@
+---
+title: "RSV Vaccination Coverage Report"
+author: "Lihui Duan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Introduction
+
+The dataset used in this report is a CDC dataset that tracks weekly RSV vaccination coverage among pregnant or recently pregnant women (18-49 years old) in the U.S. The dataset is categorized by race and ethnicity and includes the week ending date, vaccination percentage, and estimated eligible population. This analysis aims to explore trends in RSV vaccination coverage and identify any disparities among different racial and ethnic groups.
+
+```{r, load-data, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(gtsummary)
+
+# Load dataset from local directory
+rsv_data <- read_csv("../data/rsv_vax.csv")
+```
+
+# Descriptive Analysis
+
+## Tabular Analysis
+
+Below is a summary of RSV vaccination coverage across different racial and ethnic groups. This table provides insights into the mean vaccination coverage percentage and estimated eligible population by race and ethnicity.
+
+```{r, table1, echo=FALSE, message=FALSE, warning=FALSE}
+library(labelled)
+library(dplyr)
+library(broom.helpers)
+library(gtsummary)
+
+# set variables
+rsv_data <- rsv_data |> 
+  mutate(
+    race_ethnicity = as.factor(`Race and Ethnicity`),  
+    vaccination_percentage = Percent,  
+    estimated_population = Denominator * Percent / 100  
+  )
+
+# add lables
+var_label(rsv_data) <- list(
+  race_ethnicity = "Race and Ethnicity",
+  vaccination_percentage = "Percent",
+  estimated_population = "Estimated Eligible Population"
+)
+
+# check if the race data is correct 
+table(rsv_data$race_ethnicity)  
+
+# make the table
+rsv_data |>
+  select(race_ethnicity, vaccination_percentage, estimated_population) |>
+  tbl_summary(by = race_ethnicity) |>
+  modify_spanning_header(all_stat_cols() ~ "**RSV Vaccination Coverage**") |>
+  add_overall() |>
+  add_p()
+
+```
+
+The table above highlights the distribution of RSV vaccination rates among different racial and ethnic groups. It allows for comparison of vaccination coverage and the estimated eligible population within each group.
+
+## Visualization
+
+The following figure visualizes the trend of RSV vaccination coverage over time for different racial and ethnic groups.
+
+```{r, figure1, echo=FALSE, message=FALSE, warning=FALSE}
+install.packages("ggplot2")
+library(ggplot2)
+
+ggplot(rsv_data, aes(x = as.Date(Week_Ending_Date), y = vaccination_percentage, color = race_ethnicity)) +
+  geom_line(linewidth = 1) +
+  labs(title = "RSV Vaccination Coverage Over Time",
+       x = "Week Ending Date",
+       y = "Vaccination Percentage",
+       color = "Race/Ethnicity") +
+  theme_minimal()
+```
+
+The figure above shows how RSV vaccination coverage has changed over time among different racial and ethnic groups. This visualization helps in identifying trends, potential disparities, and seasonal variations in vaccination rates.
+
