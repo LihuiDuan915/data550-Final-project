@@ -10,10 +10,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(readr)
 rsv_data <- read_csv("../data/rsv_vax.csv")
-source("../code/analysis.R")
+
+# Load two separate scripts
+source("../code/make_table.R")
+source("../code/make_plot.R")
 ```
-
-
 
 
 ## Introduction

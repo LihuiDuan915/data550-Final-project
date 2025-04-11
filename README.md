@@ -5,15 +5,26 @@ This project analyzes trends in Respiratory Syncytial Virus (RSV) using a public
 
 ## Project Structure
 
-- `data/rsv_vax.csv`: Public dataset from the CDC.
-- `code/analysis.R`: Script to generate the table and figure used in the final report.
-- `report/Second_report.Rmd`: Main R Markdown file for the Second report (20250404-version).
-- `Makefile`: Automates building the final report from the `.Rmd` file.
+- `data/rsv_vax.csv`: the original dataset from the CDC.
+
+
+- `code/make_table.R`: 
+  This code creates the table used in the final report.
+- `code/make_plot.R`: 
+  This code creates the plot used in the final report.
+
+
+- `report/Second_report.Rmd`: This R Markdown file can render the report into an html file named "Second_project.html".
+
+
+- `Makefile`: Automates building the report from the `.Rmd` file.
+
+
 - `archive/initial_report.Rmd`: Early version of the analysis submitted earlier in the semester.
+
 
 ## How to Build the Report
 
-To generate the final report (HTML or PDF), run the following in your terminal:
+To generate the final report (Second_project.html), run the following in your terminal:
 
-```bash
-make
+`make`

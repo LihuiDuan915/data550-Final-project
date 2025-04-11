@@ -1,2 +1,2 @@
 all:
-	Rscript -e "rmarkdown::render('report/second_report.Rmd', knit_root_dir = '..')"
+	Rscript -e "rmarkdown::render('report/Second_report.Rmd', knit_root_dir = '.')"
