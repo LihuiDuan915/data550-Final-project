@@ -1,0 +1,6 @@
+# ignore pre-built libraries that break the image
+renv/library/
+renv/staging/
+.Rhistory
+.RData
+.Rproj.user
