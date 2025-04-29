@@ -28,38 +28,45 @@
 
 
 
-## How to Create the Report
-
-### Method 1 — GitHub + renv  
+## Create the Report - Method 1 — GitHub + renv  
 *(local R installation required)*
 
-1. Clone the repository to your local machine.
-                
-2. Set the project's directory as the work-directory.
- 
-3.Reproduce the exact R environment for this project   by running the following command in your terminal:
+- Clone the repository to your local machine.
+
+- Set the project's directory as the work-directory.
+
+- Reproduce the exact R environment for this project   by running the following command in your terminal:
    ```
    make install
-   
    ```
-4. Render the report (Second_project.html) by   running following command in your terminal:
+- Render the report (Second_project.html) by   running following command in your terminal:
    `make`
 
 
 
-### Method 2 - fully containerised
+## Create the Report - Method 2 - fully containerised
 *(No local R installation required – Docker handles everything.)*   
   
-1. Clone the repository to your local machine.
- 
-2. Pull the image by running the following command in your terminal:
+- Clone the repository to your local machine.
+
+#### Build Docker image
+(choose **\*one\*** of the following)
+
+- Pull the pre-built image by running the following command in your terminal:
      ```
      docker pull lihuiduan/data550-final-project:latest
-     
      ```
-3. Generate the report by running the following command in your docker:
+- Build the image locally by running the following command in your terminal:
+     ```
+     docker build -t lihuiduan/data550-final-project:latest .
+     ```
+     Tip: here is the link to the image on DockerHub (for reference):
+     https://hub.docker.com/r/lihuiduan/data550-final-project
+
+
+#### Run Docker image & create the report
+- Generate the report by running the following command in your docker:
     ```
     make docker-run
-    
     ```
 The container writes the HTML to /project/report_docker, which is mapped to your local report_docker/ folder, so report_docker/Second_report.html will appear on your machine.
