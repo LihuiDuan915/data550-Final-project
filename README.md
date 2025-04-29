@@ -50,18 +50,18 @@
   
 - Clone the repository to your local machine.
 
--In your terminal, cd to the project's directory.
+- In your terminal, cd to the project's directory.
 
 #### Build Docker image
 (choose **\*one\*** of the following)
 
-- Pull the pre-built image by running the following command in your terminal:
-     ```
-     docker pull lihuiduan/data550-final-project:latest
-     ```
 - Build the image locally by running the following command in your terminal:
      ```
      docker build -t lihuiduan/data550-final-project:latest .
+     ```
+- Pull the pre-built image by running the following command in your terminal:
+     ```
+     docker pull lihuiduan/data550-final-project:latest
      ```
      Tip: here is the link to the image on DockerHub (for reference):
      https://hub.docker.com/r/lihuiduan/data550-final-project
