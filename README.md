@@ -40,8 +40,9 @@
    make install
    ```
 - Render the report (Second_project.html) by   running following command in your terminal:
-   `make`
-
+   ```
+   make
+   ```
 
 
 ## Create the Report - Method 2 - fully containerised
