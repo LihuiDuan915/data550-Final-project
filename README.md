@@ -50,6 +50,8 @@
   
 - Clone the repository to your local machine.
 
+-In your terminal, cd to the project's directory.
+
 #### Build Docker image
 (choose **\*one\*** of the following)
 
